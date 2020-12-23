@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "ibm-watson": "^5.6.0",

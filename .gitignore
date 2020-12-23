@@ -3,3 +3,5 @@ node_modules
 ibm-credentials.env
 ibm-credentials.env:Zone.Identifier
 package-lock.json
+public/uploads/*
+.env

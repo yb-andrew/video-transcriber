@@ -1,6 +1,7 @@
+require('dotenv').config()
 var SpeechToTextV1 = require('ibm-watson/speech-to-text/v1'),
 // uncomment this to use IAM authentication
-// { IamAuthenticator } = require('ibm-watson/auth'),
+{ IamAuthenticator } = require('ibm-watson/auth');
   exec = require("child_process").exec,
   execSync = require("child_process").execSync,
   fs = require('fs'),
@@ -14,22 +15,11 @@ var SpeechToTextV1 = require('ibm-watson/speech-to-text/v1'),
   siofu = require("socketio-file-upload");
 
 var pathToFfmpeg = process.env.FFMPEG || "ffmpeg";
-
-// if (!process.env.WATSON_SPEECH_TO_TEXT_API_USERNAME || !process.env.WATSON_SPEECH_TO_TEXT_API_PASSWORD) {
-//   console.error("WATSON_SPEECH_TO_TEXT_API_USERNAME and WATSON_SPEECH_TO_TEXT_API_PASSWORD environment variables must be set.");
-//   process.exit();
-// }
-
-// remove this check if using IAM authentication
-if (!process.env.IBM_CREDENTIALS_FILE) {
-  console.error("IBM_CREDENTIALS_FILE environment variable must be set.");
-  process.exit();
-}
-
+console.log(process.env.SPEECH_TO_TEXT_IAM_APIKEY)
 var speech_to_text = new SpeechToTextV1({
   "url": "https://stream.watsonplatform.net/speech-to-text/api",
   // uncomment below if using IAM authentication
-  // "authenticator": new IamAuthenticator({ apikey: <IAM apikey> }),
+  "authenticator": new IamAuthenticator({ apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY }),
   "version": 'v1'
 });
 
