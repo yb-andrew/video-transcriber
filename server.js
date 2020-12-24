@@ -15,14 +15,12 @@ var SpeechToTextV1 = require('ibm-watson/speech-to-text/v1'),
   siofu = require("socketio-file-upload");
 
 var pathToFfmpeg = process.env.FFMPEG || "ffmpeg";
-console.log(process.env.SPEECH_TO_TEXT_IAM_APIKEY)
 var speech_to_text = new SpeechToTextV1({
   "url": "https://stream.watsonplatform.net/speech-to-text/api",
   // uncomment below if using IAM authentication
   "authenticator": new IamAuthenticator({ apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY }),
   "version": 'v1'
 });
-
 
 /**
  * socket.io uploader
@@ -32,7 +30,15 @@ app.use(siofu.router);
 /**845
  * Configure Express
  */
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public', {
+  etag: true, // Just being explicit about the default.
+  lastModified: true,  // Just being explicit about the default.
+  setHeaders: (res, path) => {
+    // Normally we should check which files we want to set this header for
+    // For this site we don't care about caching
+    res.setHeader('Cache-Control', 'no-cache');
+  },
+}));
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/public/index.html');
