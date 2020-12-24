@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Video Transcription Tool</title>
-    <link rel="stylesheet" href="http://glitch.digital/assets/1.0.9/main.css" />
+    <link rel="stylesheet" href="assets/index.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
     <style>
       #transcription[data-unchecked] .transcription {
@@ -74,7 +74,7 @@
         <div class="col-sm-8 col-sm-push-2">
           <h1 style="margin: 0;">Video Transcription Tool</h1>
           <p class="blockquote" style="margin-top: 10px; margin-bottom: 30px; display: inline-block;">
-            Computer assisted transcription from glitch.digital
+            Computer assisted transcription using IBM Watson. Forked from glitch.digital
           </p>
 
           <div class="clearfix">
@@ -82,7 +82,7 @@
           </div>
 
           <form id="uploader">
-            <label class="lead" style="position: absolute; top: 90px; left: 0; width: 100%;"><i class="fa fa-fw fa-lg fa-cloud-upload"></i> Upload video or audio</label>
+            <label class="lead" style="position: absolute; top: 90px; left: 50%; transform: translateX(-50%);"><i class="fa fa-fw fa-lg fa-cloud-upload"></i> Upload video or audio</label>
             <input type="file" id="siofu_input" style="cursor: pointer; width: 100%; height: 200px; opacity: 0;"/>
           </form>
       
@@ -108,15 +108,15 @@
             <a href="#" class="btn" onclick="window.location=window.location"><i class="fa fa-refresh"></i> Transcribe another video…</a>
           </p>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <p style="margin-top: 40px;">
-            This software is released under the MIT Licence. © <a href="http://glitch.digital">GLITCH.DIGITAL LIMITED</a>, 2016.
-          </p>
-        </div>
-      </div>
+      </div>      
     </div>
+    <footer>
+      <div class="copyright">
+        <p>
+          This software is released under the MIT Licence. © <a href="http://glitch.digital">GLITCH.DIGITAL LIMITED</a>, 2016.
+        </p>
+      </div>
+    </footer>
     
     <script src="/socket.io/socket.io.js"></script>
     <script src="/siofu/client.js"></script>
